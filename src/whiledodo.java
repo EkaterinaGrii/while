@@ -1,6 +1,6 @@
 public class whiledodo {
     public static void main(String[] args) {
-        task8();
+        task3();
     }
 
 
@@ -38,11 +38,11 @@ public class whiledodo {
     Рассчитайте  численность населения будет через 10 лет*/
     public static void task3() {
         int population = 12000000;
-        int fertility = 17;
-        int mortality = 8;
+        float fertility = 0.017f;
+        float mortality = 0.008f;
         byte year = 1;
         while (year <= 10) {
-            population += population * (fertility - mortality) / 1000;
+            population += population * (fertility - mortality);
             System.out.printf("Год %d численность населения составляет %d\n", year, population);
             year++;
         }
@@ -82,17 +82,16 @@ public class whiledodo {
     }
 
 
-
     /*Задача6 Kопить 9 лет
     Какой будет сумма каждые полгода */
     public static void task6() {
         byte rate = 7;
         int moneyStart = 15000;
-        byte yearSaveUp=9;
+        byte yearSaveUp = 9;
         int month = 1;
-        while (month<=108) {
+        while (month <= 108) {
             moneyStart += (moneyStart * 7 / 100);
-            if (month %6 == 0) {
+            if (month % 6 == 0) {
                 System.out.printf("За %d месяц сумма накоплений %d\n", month, moneyStart);
             }
             month++;
@@ -100,19 +99,18 @@ public class whiledodo {
     }
 
 
-
     /*Задача7 Cчитает дни месяца по датам, определяет, какой день — пятница
     Сообщение «Сегодня пятница, ...-е число. Необходимо подготовить отчет».
     месяце 31 день
     4-5выводов*/
-    public static void task7(){
-        int fridayFirst=5;
-        byte month=31;
+    public static void task7() {
+        int fridayFirst = 5;
+        byte month = 31;
         do {
-            System.out.printf("Сегодня пятница, %d-е число. Необходимо подготовить отчет\n",fridayFirst);
-            fridayFirst=fridayFirst+7;
+            System.out.printf("Сегодня пятница, %d-е число. Необходимо подготовить отчет\n", fridayFirst);
+            fridayFirst = fridayFirst + 7;
         }
-        while (fridayFirst<=month);
+        while (fridayFirst <= month);
 
 
     }
@@ -121,32 +119,18 @@ public class whiledodo {
     /*Задача8 Комета пролетает каждый 79-й год, начиная с нулевого.
     Вывести все годы за последние 200 лет и следующий год появления*/
     public static void task8() {
-    short yearStart=1823;
-    short yearEnd= 2123;
-    byte yearComet=79;
-    short year=0;
-    for (year=0;year<=yearEnd;year+=79) {
-        if(year>=yearStart) {
-            System.out.println(year);
+        short yearStart = 1823;
+        short yearEnd = 2123;
+        byte yearComet = 79;
+        short year = 0;
+        for (year = 0; year <= yearEnd; year += 79) {
+            if (year >= yearStart) {
+                System.out.println(year);
+            }
         }
-    }
-
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
