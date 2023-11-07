@@ -1,6 +1,8 @@
+import java.math.BigDecimal;
+
 public class whiledodo {
     public static void main(String[] args) {
-        task3();
+        task8();
     }
 
 
@@ -23,8 +25,7 @@ public class whiledodo {
     public static void task2() {
         byte i = 1;
         while (i <= 10) {
-            System.out.printf("%d ", i);
-            i++;
+            System.out.printf("%d ", i++);
         }
         System.out.println();
         for (i = 10; i >= 1; i--) {
@@ -42,9 +43,8 @@ public class whiledodo {
         float mortality = 0.008f;
         byte year = 1;
         while (year <= 10) {
-            population += population * (fertility - mortality);
-            System.out.printf("Год %d численность населения составляет %d\n", year, population);
-            year++;
+            population += (int) (population * (fertility - mortality));
+            System.out.printf("Год %d численность населения составляет %d\n", year++, population);
         }
     }
 
@@ -54,28 +54,42 @@ public class whiledodo {
     Сколько месяцев нужно будет накопить 12 миллионов рублей
     Выведите результат с указанием суммы по каждому месяцу.*/
     public static void task4() {
-        byte rate = 7;
-        int moneyStart = 15000;
-        int moneyDream = 12000000;
+        float rate = 0.07f;
+        double moneyStart = 15000;
+        double moneyDream = 12000000;
         int month = 1;
         while (moneyStart < moneyDream) {
-            moneyStart += (moneyStart * 7 / 100);
-            System.out.printf("За %d месяц сумма накоплений %d\n", month, moneyStart);
-            month++;
+            moneyStart += (moneyStart * rate);
+            System.out.printf("За %d месяц сумма накоплений %.2f\n", month++, moneyStart);
         }
     }
 
 
+    public static void task9() {
+        BigDecimal rate = new BigDecimal(0.07);
+        BigDecimal moneyStart = new BigDecimal(15000);
+        BigDecimal moneyDream = new BigDecimal(12000000);
+        BigDecimal money, maxNumber;
+        int month = 1;
+        maxNumber=moneyStart.max(moneyDream);
+        while (maxNumber==moneyStart) {
+            money=(moneyStart.multiply(rate)).add(moneyStart);
+        System.out.printf("За %d месяц сумма накоплений %.2f\n", month++, moneyStart);
+    }
+}
+
+
+
     //Задача5 Вывод каждого 6го месяца
     public static void task5() {
-        byte rate = 7;
-        int moneyStart = 15000;
-        int moneyDream = 12000000;
+        float rate = 0.07f;
+        double moneyStart = 15000;
+        double moneyDream = 12000000;
         int month = 1;
         while (moneyStart < moneyDream) {
-            moneyStart += (moneyStart * 7 / 100);
+            moneyStart += (moneyStart * rate);
             if (month % 6 == 0) {
-                System.out.printf("За %d месяц сумма накоплений %d\n", month, moneyStart);
+                System.out.printf("За %d месяц сумма накоплений %.2f\n", month, moneyStart);
             }
             month++;
         }
@@ -85,14 +99,13 @@ public class whiledodo {
     /*Задача6 Kопить 9 лет
     Какой будет сумма каждые полгода */
     public static void task6() {
-        byte rate = 7;
-        int moneyStart = 15000;
-        byte yearSaveUp = 9;
+        float rate = 0.07f;
+        double moneyStart = 15000;
         int month = 1;
         while (month <= 108) {
-            moneyStart += (moneyStart * 7 / 100);
+            moneyStart += (moneyStart * rate);
             if (month % 6 == 0) {
-                System.out.printf("За %d месяц сумма накоплений %d\n", month, moneyStart);
+                System.out.printf("За %d месяц сумма накоплений %.2f\n", month, moneyStart);
             }
             month++;
         }
@@ -119,10 +132,9 @@ public class whiledodo {
     /*Задача8 Комета пролетает каждый 79-й год, начиная с нулевого.
     Вывести все годы за последние 200 лет и следующий год появления*/
     public static void task8() {
-        short yearStart = 1823;
-        short yearEnd = 2123;
-        byte yearComet = 79;
-        short year = 0;
+        int yearStart = 1823;
+        int yearEnd = 2123;
+        int year = 0;
         for (year = 0; year <= yearEnd; year += 79) {
             if (year >= yearStart) {
                 System.out.println(year);
